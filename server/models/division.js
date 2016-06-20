@@ -2,7 +2,7 @@
 var response = {
 	'success': true,
 	'data' : { 
-		'facets' : [
+		'divisions' : [
 			{'name': 'div1', 'title': 'Division 1'},
 			{'name': 'div2', 'title': 'Division 2'},
 			{'name': 'div3', 'title': 'Division 3'},

@@ -1,11 +1,11 @@
 import { Router } from 'express';
-import facets from './facets';
+import division from './division';
 
 export default function() {
 	var api = Router();
 
-	// mount the facets resource
-	api.use('/facets', facets);
+	// mount the division resource
+	api.use('/division', division);
 
 	// perhaps expose some API metadata at the root
 	api.get('/', (req, res) => {
