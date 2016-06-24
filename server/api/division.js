@@ -1,5 +1,5 @@
 import resource from 'resource-router-middleware';
-import division from '../models/division';
+import {all, find} from '../models/division';
 
 export default resource({
 
@@ -10,14 +10,14 @@ export default resource({
 	 *  Errors terminate the request, success sets `req[id] = data`.
 	 */
 	load(req, id, callback) {
-		var div = division.find( div => div.id===id ),
-			err = div ? null : 'Not found';
+		let div = find(id);
+		let	err = div ? null : 'Not found';
 		callback(err, div);
 	},
 
 	/** GET / - List all entities */
 	index({ params }, res) {
-		res.json(division);
+		res.json(all());
 	},
 
 	/** POST / - Create a new entity */

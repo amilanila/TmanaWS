@@ -5,7 +5,7 @@ import team from './team';
 export default function() {
 	var api = Router();
 
-	// mount the division resource
+	// mount resources
 	api.use('/division', division);
 	api.use('/team', team);
 
@@ -14,7 +14,7 @@ export default function() {
 		res.json({
 			version : '1.0'
 		});
-	});
+	});	
 
 	return api;
 }
