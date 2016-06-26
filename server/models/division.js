@@ -16,10 +16,7 @@ export const all = () => {
 };
 
 export const find = id => {
-	console.log('searching for division with id: ' + id);
 	var div = divisions.find( div => div.id === id );
-	console.log('division found is: ' + JSON.stringify(div));	
-	console.log('status = ' + (!!div && !!div.id));
 	let response = {
 		'success' : div && !!div.id,
 		'data': {
