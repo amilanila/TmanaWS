@@ -5,7 +5,7 @@ export const teams =  [
 	{'id': 'tm4', 'name': 'team4', 'title': 'Team 4', 'divId': 'd3'}
 ];
 
-export const all = () => {
+export const teamAll = () => {
 	let response = {
 	'success': true,
 	    'data': {
@@ -15,7 +15,7 @@ export const all = () => {
 	return response;    
 };
 
-export const find = id => {
+export const teamFindById = id => {
 	let team = teams.find( team => team.id === id );
 	let response = {
 		'success' : team && !!team.id,
@@ -26,7 +26,7 @@ export const find = id => {
 	return response;
 };
 
-export const findByDivivion = divId => {
+export const teamFindByDivivion = divId => {
 	let team = teams.find(team => team.divId === divId);
 	console.log('team by divition = '+ team);
 	let response = {

@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import division from './division';
 // import team from './team';
-import { all, find, findByDivivion } from '../models/team';
+import { teamAll, teamFindById, teamFindByDivivion } from '../models/team';
 
 export default function() {
 	var api = Router();
@@ -11,11 +11,15 @@ export default function() {
 
 	// team routing
 	api.get('/team', (req, res) => {
-		res.json(all());
+		res.json(teamAll());
+	});
+
+	api.get('/team/:id', (req, res) => {
+		res.json(teamFindById('tm1'));
 	});
 
 	api.get('/team/div/:divId', (req, res) => {
-		res.json(findByDivivion('d2'));
+		res.json(teamFindByDivivion('d2'));
 	});
 	
 	// perhaps expose some API metadata at the root
