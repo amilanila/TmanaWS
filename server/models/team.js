@@ -27,7 +27,7 @@ export const teamFindById = id => {
 };
 
 export const teamFindByDivivion = divId => {
-	let team = teams.find(team => team.divId === divId);
+	let team = teams.filter(team => team.divId === divId);
 	let response = {
 		'success': team && !!team.id,
 		'data': {
