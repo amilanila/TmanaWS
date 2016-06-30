@@ -15,11 +15,11 @@ export default function() {
 	});
 
 	api.get('/team/:id', (req, res) => {
-		res.json(teamFindById('tm1'));
+		res.json(teamFindById(req.params.id));
 	});
 
 	api.get('/team/div/:divId', (req, res) => {
-		res.json(teamFindByDivivion('d2'));
+		res.json(teamFindByDivivion(req.params.divId));
 	});
 	
 	// perhaps expose some API metadata at the root
