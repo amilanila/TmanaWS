@@ -28,11 +28,13 @@ export const find = id => {
 
 export const findByDivivion = divId => {
 	let team = teams.find(team => team.divId === divId);
+	console.log('team by divition = '+ team);
 	let response = {
 		'success': team && !!team.id,
 		'data': {
 			'team': team
 		}
 	};
+	return response;
 };
 

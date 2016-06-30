@@ -7,6 +7,8 @@ export default resource({
 	id : 'team',
 
 	load(req, id, callback) {
+		console.log('url = ' + req.url);
+		console.log('params = ' + JSON.stringify(req.params));
 		let team = find(id);
 		let	err = team ? null : 'Not found';
 		callback(err, team);
