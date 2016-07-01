@@ -27,11 +27,11 @@ export const teamFindById = id => {
 };
 
 export const teamFindByDivivion = divId => {
-	let team = teams.filter(team => team.divId === divId);
+	let tms = teams.filter(team => team.divId === divId);
 	let response = {
-		'success': team && !!team.id,
+		'success': tms && !!tms.length,
 		'data': {
-			'team': team
+			'teams': tms
 		}
 	};
 	return response;
