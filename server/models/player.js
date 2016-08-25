@@ -1,8 +1,8 @@
 export const players =  [
 	{'id': 'p1', 'fname': 'Thisal', 'lname': 'Wijekoon', 'category': 'J'},
-	{'id': 'p1', 'fname': 'Hiruki', 'lname': 'Wijekoon', 'category': 'J'},
-	{'id': 'p1', 'fname': 'Ryan', 'lname': 'Premarathna', 'category': 'J'},
-	{'id': 'p1', 'fname': 'Enuri', 'lname': 'Weerarathna', 'category': 'J'}
+	{'id': 'p2', 'fname': 'Hiruki', 'lname': 'Wijekoon', 'category': 'J'},
+	{'id': 'p3', 'fname': 'Ryan', 'lname': 'Premarathna', 'category': 'J'},
+	{'id': 'p4', 'fname': 'Enuri', 'lname': 'Weerarathna', 'category': 'J'}
 ];
 
 export const playerAll = () => {
