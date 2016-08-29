@@ -1,11 +1,11 @@
 export const players =  [
-	{'id': 'p1', 'fname': 'Thisal', 'lname': 'Wijekoon', 'category': 'J'},
-	{'id': 'p2', 'fname': 'Hiruki', 'lname': 'Wijekoon', 'category': 'J'},
-	{'id': 'p3', 'fname': 'Ryan', 'lname': 'Premarathna', 'category': 'J'},
-	{'id': 'p4', 'fname': 'Enuri', 'lname': 'Weerarathna', 'category': 'J'},
-	{'id': 'p5', 'fname': 'Amila', 'lname': 'Nilantha', 'category': 'S'},
-	{'id': 'p6', 'fname': 'Nishantha', 'lname': 'Premarathna', 'category': 'S'},
-	{'id': 'p7', 'fname': 'Ranjith', 'lname': 'Wanasinghe', 'category': 'S'}
+	{'id': 'p1', 'fname': 'Thisal', 'lname': 'Wijekoon', 'category': 'J', 'profile': 'batsman'},
+	{'id': 'p2', 'fname': 'Hiruki', 'lname': 'Wijekoon', 'category': 'J', 'profile': 'bowler'},
+	{'id': 'p3', 'fname': 'Ryan', 'lname': 'Premarathna', 'category': 'J', 'profile': 'batsman'},
+	{'id': 'p4', 'fname': 'Enuri', 'lname': 'Weerarathna', 'category': 'J', 'profile': 'all rounder'},
+	{'id': 'p5', 'fname': 'Amila', 'lname': 'Nilantha', 'category': 'S', 'profile': 'batsman'},
+	{'id': 'p6', 'fname': 'Nishantha', 'lname': 'Premarathna', 'category': 'S', 'profile': 'all rounder'},
+	{'id': 'p7', 'fname': 'Ranjith', 'lname': 'Wanasinghe', 'category': 'S', 'profile': 'wicket keeper'}
 ];
 
 export const playerAll = () => {
