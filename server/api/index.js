@@ -4,6 +4,7 @@ import team from './team';
 import { teamAll, teamFindById, teamFindByDivivion } from '../models/team';
 import player from './player';
 import { playerAll, playerFindById, playerFindByCategory } from '../models/player';
+import { playerProfileFindById } from '../models/playerprofile';
 
 export default function() {
 	var api = Router();
@@ -35,6 +36,11 @@ export default function() {
 
 	api.get('/player/cat/:cat', (req, res) => {
 		res.json(playerFindByCategory(req.params.cat));
+	});
+
+	// player profile routing
+	api.get('/playerprofile/:id', (req, res) => {
+		res.json(playerProfileFindById(req.params.id));
 	});
 
 	// perhaps expose some API metadata at the root
