@@ -28,7 +28,7 @@ export const playerFindById = id => {
 	};
 	return response;
 };
-n
+
 export const playerFindByCategory = cat => {
 	let pla = players.filter(player => player.category === cat);
 	let response = {
