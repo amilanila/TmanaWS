@@ -1,21 +1,86 @@
-export const players =  [
-	{'id': 'p1', 'fname': 'Thisal', 'lname': 'Wijekoon', 'category': 'J', 'profile': 'batsman'},
-	{'id': 'p2', 'fname': 'Hiruki', 'lname': 'Wijekoon', 'category': 'J', 'profile': 'bowler'},
-	{'id': 'p3', 'fname': 'Ryan', 'lname': 'Premarathna', 'category': 'J', 'profile': 'batsman'},
-	{'id': 'p4', 'fname': 'Enuri', 'lname': 'Weerarathna', 'category': 'J', 'profile': 'all rounder'},
-	{'id': 'p5', 'fname': 'Amila', 'lname': 'Nilantha', 'category': 'S', 'profile': 'batsman'},
-	{'id': 'p6', 'fname': 'Nishantha', 'lname': 'Premarathna', 'category': 'S', 'profile': 'all rounder'},
-	{'id': 'p7', 'fname': 'Ranjith', 'lname': 'Wanasinghe', 'category': 'S', 'profile': 'wicket keeper'}
-];
+let playerInitialised = false;
+let db = null;
+let mongoose = null;
+let PlayerSchema = null;
+let Player = null;
 
-export const playerAll = () => {
-	let response = {
-	'success': true,
-	    'data': {
-		    'players': players 
-	    }
-	};
-	return response;    
+export const init = () => {
+	connect();
+	initPlayer();
+	playerInitialised = true;	
+}
+
+export const connect = () => {
+	mongoose = require('mongoose');
+	mongoose.Promise = global.Promise;
+	mongoose.connect('mongodb://localhost/test');
+
+	db = mongoose.connection;
+	db.on('error', console.error.bind(console, 'connection error:'));
+
+	console.log('Connected to database');
+}
+
+export const disconnect = () => {
+	mongoose.disconnect(function() {
+		console.log('Disconnected from database');
+	});
+};
+
+export const initPlayer = () => {
+	// schema
+	PlayerSchema = mongoose.Schema({
+		id: String,
+		fname: String,
+		lname: String,
+		category: String
+	});
+
+	// model
+	Player = null;
+	if (Player == null) {
+		Player = mongoose.model('Player', PlayerSchema);
+	}
+
+	console.log('Player model initialised');
+}
+
+export const playerAll = (req, res) => {
+	let players = [];
+	let response = {};
+
+	if (!playerInitialised) {
+		init();
+	}
+
+	Player.find({}).exec((err, plyrs) => {
+		if (err) {
+			console.log('Error loading players');
+
+			response = {
+				'success': false,
+				'data': {
+					'players': []
+				}
+			};
+		} else {
+			console.log('Players loaded successfully');
+
+			plyrs.forEach(function(player) {
+				// console.log('player = ', player);
+				players.push(player);
+			});
+
+			response = {
+				'success': true,
+				'data': {
+					'players': players 
+				}
+			};	
+		}
+		
+		res.json(response);
+	});
 };
 
 export const playerFindById = id => {

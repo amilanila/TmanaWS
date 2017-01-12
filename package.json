@@ -18,7 +18,9 @@
     "compression": "^1.5.2",
     "cors": "^2.7.1",
     "express": "^4.13.3",
-    "resource-router-middleware": "^0.5.1"
+    "mongodb": "^2.2.9",
+    "resource-router-middleware": "^0.5.1",
+    "mongoose": "^4.6.0"
   },
   "devDependencies": {
     "babel-cli": "^6.9.0",

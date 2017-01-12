@@ -7,6 +7,7 @@ import { playerAll, playerFindById, playerFindByCategory } from '../models/playe
 import { playerProfileFindById } from '../models/playerprofile';
 
 export default function() {
+
 	var api = Router();
 
 	// mount resources
@@ -27,7 +28,8 @@ export default function() {
 	
 	// player routing
 	api.get('/player', (req, res) => {
-		res.json(playerAll());
+		// res.json(playerAll());
+		playerAll(req, res);
 	});
 
 	api.get('/player/:id', (req, res) => {
