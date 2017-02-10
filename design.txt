@@ -1,0 +1,46 @@
+Player
+	- id
+	- image
+	- firstName
+	- lastName
+
+PlayerProfile
+	- id
+	- teamId
+	- gender
+	- birthday
+	- battingStyle
+	- bowlingStyle
+	- height
+	- profile
+
+PlayerStat
+	- playerId
+	- divisionId
+	- teamId
+	- matchId
+	- runFor
+	- over
+	- runAgainst
+	- catch
+	- runout
+	- award
+
+Team
+	- id
+	- name
+	- address
+	- description
+
+Division
+	- id
+	- name
+	- description
+
+Match
+	- divisionId
+	- date
+	- venue
+	- team1
+	- team2
+	- winner

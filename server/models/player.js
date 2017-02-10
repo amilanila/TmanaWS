@@ -1,7 +1,7 @@
+import { connect, disconnect, mongoose } from '../schema/db';
+import { PlayerSchema } from '../schema/schema';
+
 let playerInitialised = false;
-let db = null;
-let mongoose = null;
-let PlayerSchema = null;
 let Player = null;
 
 export const init = () => {
@@ -10,38 +10,10 @@ export const init = () => {
 	playerInitialised = true;	
 }
 
-export const connect = () => {
-	mongoose = require('mongoose');
-	mongoose.Promise = global.Promise;
-	mongoose.connect('mongodb://localhost/test');
-
-	db = mongoose.connection;
-	db.on('error', console.error.bind(console, 'connection error:'));
-
-	console.log('Connected to database');
-}
-
-export const disconnect = () => {
-	mongoose.disconnect(function() {
-		console.log('Disconnected from database');
-	});
-};
-
 export const initPlayer = () => {
-	// schema
-	PlayerSchema = mongoose.Schema({
-		id: String,
-		fname: String,
-		lname: String,
-		category: String
-	});
-
-	// model
-	Player = null;
 	if (Player == null) {
 		Player = mongoose.model('Player', PlayerSchema);
 	}
-
 	console.log('Player model initialised');
 }
 
