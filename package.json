@@ -6,7 +6,7 @@
   "scripts": {
     "start": "babel-node index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "debug": "babel-node -debug index.js --debug-brk"
+    "debug": "babel-node-debug index.js"
   },
   "repository": {
     "type": "git",

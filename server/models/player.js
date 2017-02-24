@@ -56,6 +56,7 @@ export const playerAll = (req, res) => {
 };
 
 export const playerFindById = id => {
+	console.log('>>>>>>>>>>>>>>>>>>>>>>>>>.');
 	let player = players.find( player => player.id === id );
 	let response = {
 		'success' : player && !!player.id,
