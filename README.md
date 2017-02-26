@@ -38,3 +38,31 @@ License
 -------
 
 MIT
+
+
+URLs:
+-----
+Get all players: GET -> http://localhost:8080/api/player
+Get root: GET -> http://localhost:8080/api/
+Create player: POST -> http://localhost:8080/api/player/create
+	JSON ->
+	{
+		"name": "Amila Nilantha",
+		"birthday": "August 24",
+		"height": "5 8",
+		"weight": "61kg",
+		"description": "All rounder",
+		"battingStyle": "Right handed",
+		"bowlingStyle": "Right arm medium pace",
+		"team": "Grasshoppers",
+		"division": "Divition-3",
+		"season": "Autumn-Winter 2017",
+		"match": "1",
+		"runs": 20,
+		"runsConceded": 8,
+		"oversBowled": 2,
+		"wickets": 1,
+		"catches": 1,
+		"contribution": 12,
+		"outs": 2
+	}

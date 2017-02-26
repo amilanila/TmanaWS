@@ -1,1 +1,1 @@
-export const DB_URL = 'mongodb://localhost/test';
+export const DB_URL = 'mongodb://localhost/tmana';

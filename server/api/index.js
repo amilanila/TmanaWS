@@ -1,56 +1,38 @@
 import { Router } from 'express';
-import division from './division';
-import team from './team';
-import { teamAll, teamFindById, teamFindByDivivion } from '../models/team';
 import player from './player';
-import { playerAll, playerFindById, playerFindByCategory } from '../models/player';
-import { playerProfileFindById } from '../models/playerprofile';
+import { playerCreate, playerAll, playerByName, playerDeleteByName } from '../models/player';
+
 
 export default function() {
 
 	var api = Router();
-
-	// mount resources
-	api.use('/division', division);
-
-	// team routing
-	api.get('/team', (req, res) => {
-		res.json(teamAll());
-	});
-
-	api.get('/team/:id', (req, res) => {
-		res.json(teamFindById(req.params.id));
-	});
-
-	api.get('/team/div/:divId', (req, res) => {
-		res.json(teamFindByDivivion(req.params.divId));
-	});
 	
-	// player routing
-	api.get('/player', (req, res) => {
-		// res.json(playerAll());
-		playerAll(req, res);
-	});
-
-	api.get('/player/:id', (req, res) => {
-		res.json(playerFindById(req.params.id));
-	});
-
-	api.get('/player/cat/:cat', (req, res) => {
-		res.json(playerFindByCategory(req.params.cat));
-	});
-
-	// player profile routing
-	api.get('/playerprofile/:id', (req, res) => {
-		res.json(playerProfileFindById(req.params.id));
-	});
-
 	// perhaps expose some API metadata at the root
 	api.get('/', (req, res) => {
 		res.json({
 			version : '1.0'
 		});
 	});	
+
+	// Create player
+	api.post('/player/create', (req, res) => {
+		playerCreate(req, res);
+	});
+
+	// Load all players
+	api.get('/player', (req, res) => {
+		playerAll(req, res);
+	});
+
+	// Load player by name
+	api.get('/player/:name', (req, res) => {
+		playerByName(req, res);
+	});
+
+	// Load player by name
+	api.get('/player/delete/:name', (req, res) => {
+		playerDeleteByName(req, res);
+	});
 
 	return api;
 }

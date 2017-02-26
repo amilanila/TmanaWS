@@ -6,15 +6,41 @@ let Player = null;
 
 export const init = () => {
 	connect();
-	initPlayer();
+	playerInit();
 	playerInitialised = true;	
 }
 
-export const initPlayer = () => {
+export const playerInit = () => {
 	if (Player == null) {
 		Player = mongoose.model('Player', PlayerSchema);
 	}
 	console.log('Player model initialised');
+}
+
+export const playerCreate = (req, res) => {
+	console.log('Saving player: ' + JSON.stringify(req.body));
+
+	let response = {};
+	if (!playerInitialised) {
+		init();
+	}
+
+	const player = new Player (req.body);
+
+	player.save((err) => {
+		if (err) {
+			console.log('Error while saving player: ' + err);
+			response = {
+				'success': false
+			};
+		} else {
+			console.log('Player saved successfully');
+			response = {
+				'success': true
+			};
+		}
+		res.json(response);
+	});
 }
 
 export const playerAll = (req, res) => {
@@ -55,26 +81,76 @@ export const playerAll = (req, res) => {
 	});
 };
 
-export const playerFindById = id => {
-	console.log('>>>>>>>>>>>>>>>>>>>>>>>>>.');
-	let player = players.find( player => player.id === id );
-	let response = {
-		'success' : player && !!player.id,
-		'data': {
-			'player': player
+export const playerByName = (req, res) => {
+	let name = req.params.name;
+	let response = {};
+
+	if (!playerInitialised) {
+		init();
+	}
+
+	Player.find({'name': name}).exec((err, player) => {
+		if (err) {
+			console.log('Error loading player with name: ' + name);
+
+			response = {
+				'success': false,
+				'data': {
+					'player': {}
+				}
+			};
+		} else {
+			console.log('Player loaded successfully for name: ' + name);
+
+			response = {
+				'success': true,
+				'data': {
+					'player': player
+				}
+			};	
 		}
-	};
-	return response;
+		
+		res.json(response);
+	});
 };
 
-export const playerFindByCategory = cat => {
-	let pla = players.filter(player => player.category === cat);
-	let response = {
-		'success': pla && !!pla.length,
-		'data': {
-			'players': pla
-		}
-	};
-	return response;
-};
+export const playerDeleteByName = (req, res) => {
+	let name = req.params.name;
+	let response = {};
 
+	if (!playerInitialised) {
+		init();
+	}
+
+
+	Player.find({'name': name}).exec((err, plyrs) => {
+		if (err) {
+			console.log('Error loading players to be removed for name: ' + name);
+
+			response = {
+				'success': false
+			};
+		} else {
+			console.log('Players loaded successfully to be removed for name: ' + name);
+
+			plyrs.forEach(function(player) {
+				const name = player.name;
+				player.remove((err) => {
+					if (err) {
+						console.log('Error while removing player: ' + name);
+						response = {
+							'success': false
+						};
+						
+					} else {
+						console.log('Player removed successfully: ' + name);
+					}
+				});
+			});
+			response = {
+				'success': true
+			};
+			res.json(response);
+		}
+	});
+};
