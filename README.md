@@ -43,7 +43,9 @@ MIT
 URLs:
 -----
 Get all players: GET -> http://localhost:8080/api/player
+
 Get root: GET -> http://localhost:8080/api/
+
 Create player: POST -> http://localhost:8080/api/player/create
 	JSON ->
 	{
@@ -66,3 +68,7 @@ Create player: POST -> http://localhost:8080/api/player/create
 		"contribution": 12,
 		"outs": 2
 	}
+
+Get player with name: GET -> http://localhost:8080/api/player/Amila Nilantha
+
+Delete player with name: GET -> http://localhost:8080/api/player/delete/Amila Nilantha

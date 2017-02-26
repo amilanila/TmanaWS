@@ -114,6 +114,39 @@ export const playerByName = (req, res) => {
 	});
 };
 
+export const playerById = (req, res) => {
+	let id = req.params.id;
+	let response = {};
+
+	if (!playerInitialised) {
+		init();
+	}
+
+	Player.find({'id': id}).exec((err, player) => {
+		if (err) {
+			console.log('Error loading player with id: ' + id);
+
+			response = {
+				'success': false,
+				'data': {
+					'player': {}
+				}
+			};
+		} else {
+			console.log('Player loaded successfully for id: ' + id);
+
+			response = {
+				'success': true,
+				'data': {
+					'player': player
+				}
+			};	
+		}
+		
+		res.json(response);
+	});
+};
+
 export const playerDeleteByName = (req, res) => {
 	let name = req.params.name;
 	let response = {};

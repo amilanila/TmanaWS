@@ -1,7 +1,15 @@
 let mongoose = require('mongoose');
 
+// Member
+export const MemberSchema = mongoose.Schema({
+	id: Number,
+	name: String,
+	photo: String
+});
+
 // Player
 export const PlayerSchema = mongoose.Schema({
+	id: Number,
 	name: String,
 	birthday: String,
 	height: String,
