@@ -122,7 +122,7 @@ export const playerById = (req, res) => {
 		init();
 	}
 
-	Player.find({'id': id}).exec((err, player) => {
+	Player.find({'id': id}).exec((err, plyrs) => {
 		if (err) {
 			console.log('Error loading player with id: ' + id);
 
@@ -135,10 +135,17 @@ export const playerById = (req, res) => {
 		} else {
 			console.log('Player loaded successfully for id: ' + id);
 
+			let players = [];
+
+			plyrs.forEach(function(player) {
+				// console.log('player = ', player);
+				players.push(player);
+			});
+
 			response = {
 				'success': true,
 				'data': {
-					'player': player
+					'player': players 
 				}
 			};	
 		}
