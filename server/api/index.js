@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import player from './player';
 import { playerCreate, playerAll, playerById, playerByName, playerDeleteByName } from '../models/player';
-import { memberCreate, memberAll, memberById, memberByName, memberDeleteByName } from '../models/member';
+import { memberCreate, memberAll, memberById, memberByName, memberDeleteById } from '../models/member';
 
 
 export default function() {
@@ -37,8 +37,8 @@ export default function() {
 	});
 
 	// Load member by name
-	api.get('/member/delete/:name', (req, res) => {
-		playerDeleteByName(req, res);
+	api.get('/member/delete/:id', (req, res) => {
+		memberDeleteById(req, res);
 	});
 
 	// ------------------------- Player --------------------------- //

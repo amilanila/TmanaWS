@@ -175,7 +175,7 @@ export const memberDeleteById = (req, res) => {
 						};
 						
 					} else {
-						console.log('Player removed successfully: ' + id);
+						console.log('Member removed successfully: ' + id);
 					}
 				});
 			});
