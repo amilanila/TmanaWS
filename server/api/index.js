@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import player from './player';
-import { playerCreate, playerAll, playerById, playerByName, playerDeleteByName } from '../models/player';
+import { playerCreate, playerAll, playerById, playerByName, playerDeleteById } from '../models/player';
 import { memberCreate, memberAll, memberById, memberByName, memberDeleteById } from '../models/member';
 
 
@@ -36,7 +36,7 @@ export default function() {
 		memberByName(req, res);
 	});
 
-	// Load member by name
+	// Delete member by name
 	api.get('/member/delete/:id', (req, res) => {
 		memberDeleteById(req, res);
 	});
@@ -62,10 +62,9 @@ export default function() {
 		playerByName(req, res);
 	});
 
-	// Load player by name
-	api.get('/player/delete/:name', (req, res) => {
-		playerDeleteByName(req, res);
+	// Delte player by id
+	api.get('/player/delete/:id', (req, res) => {
+		playerDeleteById(req, res);
 	});
-
 	return api;
 }

@@ -154,8 +154,8 @@ export const playerById = (req, res) => {
 	});
 };
 
-export const playerDeleteByName = (req, res) => {
-	let name = req.params.name;
+export const playerDeleteById = (req, res) => {
+	let id = req.params.id;
 	let response = {};
 
 	if (!playerInitialised) {
@@ -163,27 +163,27 @@ export const playerDeleteByName = (req, res) => {
 	}
 
 
-	Player.find({'name': name}).exec((err, plyrs) => {
+	Player.find({'id': id}).exec((err, plyrs) => {
 		if (err) {
-			console.log('Error loading players to be removed for name: ' + name);
+			console.log('Error loading players to be removed for id: ' + id);
 
 			response = {
 				'success': false
 			};
 		} else {
-			console.log('Players loaded successfully to be removed for name: ' + name);
+			console.log('Players loaded successfully to be removed for id: ' + id);
 
 			plyrs.forEach(function(player) {
-				const name = player.name;
+				const id = player.id;
 				player.remove((err) => {
 					if (err) {
-						console.log('Error while removing player: ' + name);
+						console.log('Error while removing player: ' + id);
 						response = {
 							'success': false
 						};
 						
 					} else {
-						console.log('Player removed successfully: ' + name);
+						console.log('Player removed successfully: ' + id);
 					}
 				});
 			});
