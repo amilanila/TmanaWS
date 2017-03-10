@@ -18,29 +18,40 @@ export const memberInit = () => {
 }
 
 export const memberCreate = (req, res) => {
-	console.log('Saving member: ' + JSON.stringify(req.body));
+	const members = req.body;
+
+	console.log('Saving member: ' + JSON.stringify(members));
 
 	let response = {};
 	if (!memberInitialised) {
 		init();
 	}
 
-	const member = new Member (req.body);
+	const numberOfMembers = members.length;
+	let count = 0;
 
-	member.save((err) => {
-		if (err) {
-			console.log('Error while saving member: ' + err);
-			response = {
-				'success': false
-			};
-		} else {
-			console.log('Member saved successfully');
-			response = {
-				'success': true
-			};
-		}
-		res.json(response);
-	});
+	members.map(memberDetails => {
+		const member = new Member (memberDetails);
+
+		member.save((err) => {
+			count += 1;
+
+			if (err) {
+				console.log('Error while saving member: ' + err);
+				response = {
+					'success': false
+				};
+			} else {
+				console.log('Member saved successfully');
+				response = {
+					'success': true
+				};
+			}
+			if (count == numberOfMembers) {
+				res.json(response);	
+			}
+		});	
+	});	
 }
 
 export const memberAll = (req, res) => {

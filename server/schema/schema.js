@@ -4,7 +4,8 @@ let mongoose = require('mongoose');
 export const MemberSchema = mongoose.Schema({
 	id: Number,
 	name: String,
-	photo: String
+	photo: String,
+	season: [String]
 });
 
 // Player
