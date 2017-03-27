@@ -24,5 +24,6 @@ const reconnect = () => {
 	});
 
 	console.log('now I am in master');
+	console.log('I am going to switch to master now');
 };
 export { connect, disconnect, mongoose };
