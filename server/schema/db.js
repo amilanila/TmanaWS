@@ -18,4 +18,9 @@ const disconnect = () => {
 	});
 };
 
+const reconnect = () => {
+	mongoose.disconnect(function() {
+		console.log('reconnect to database');
+	});
+};
 export { connect, disconnect, mongoose };
