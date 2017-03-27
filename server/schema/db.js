@@ -17,13 +17,4 @@ const disconnect = () => {
 		console.log('Disconnected from database');
 	});
 };
-
-const reconnect = () => {
-	mongoose.disconnect(function() {
-		console.log('reconnect to database');
-	});
-
-	console.log('now I am in master');
-	console.log('I am going to switch to master now');
-};
 export { connect, disconnect, mongoose };

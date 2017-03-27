@@ -30,8 +30,3 @@ export const PlayerSchema = mongoose.Schema({
 	contribution: Number,
 	outs: Number
 });
-
-export const TestSchema = mongoose.Schema({
-	id: Number,
-	name: String	
-});
