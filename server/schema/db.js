@@ -22,5 +22,7 @@ const reconnect = () => {
 	mongoose.disconnect(function() {
 		console.log('reconnect to database');
 	});
+
+	console.log('now I am in master');
 };
 export { connect, disconnect, mongoose };
