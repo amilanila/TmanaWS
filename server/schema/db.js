@@ -22,5 +22,6 @@ const reconnect = () => {
 	mongoose.disconnect(function() {
 		console.log('reconnect to database');
 	});
+	console.log('I am going to switch to master now');
 };
 export { connect, disconnect, mongoose };
