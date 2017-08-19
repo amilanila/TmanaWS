@@ -1,6 +1,7 @@
-node {
+node('master') {
 	stage('checkout') {
 		echo 'Checkout...'
+		checkout scm
 	}
 
 	stage('build') {
