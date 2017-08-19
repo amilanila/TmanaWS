@@ -27,7 +27,7 @@ rm -rf .git && git init && npm init
 npm install
 
 # Run it
-PORT=8080 npm start
+set PORT=8081 & npm start
 
 # With nodemon:
 PORT=8080 nodemon
